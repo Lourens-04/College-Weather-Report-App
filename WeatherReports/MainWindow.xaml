@@ -1,0 +1,151 @@
+﻿<Window x:Name="WeatherReports" x:Class="WeatherReports.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherReports"
+        mc:Ignorable="d"
+        Title="Log In" Height="426.5" Width="456.134" Closed="WeatherReports_Closed" WindowStartupLocation="CenterScreen" IsTabStop="False" Background="#FF061C29" BorderBrush="Transparent" Loaded="WeatherReports_Loaded">
+
+    <Grid>
+        <Label x:Name="lblUsername" Content="Enter Username :" HorizontalAlignment="Left" Margin="27,80,0,0" VerticalAlignment="Top" Width="193" Panel.ZIndex="3" Foreground="#FFF4E675" FontSize="18" Height="31"/>
+        <Label x:Name="lblPassword" Content="Enter Password :" HorizontalAlignment="Left" Margin="27,136,0,0" VerticalAlignment="Top" Width="192" Panel.ZIndex="3" Foreground="#FFF4E675" FontSize="18" />
+        <TextBox x:Name="txbUsername" HorizontalAlignment="Left" Height="31" Margin="233,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" FontSize="18" Background="#FF3E8284" Foreground="White" BorderBrush="Black" TabIndex="1"/>
+        <Button x:Name="btnLogIn" Content="Log In" HorizontalAlignment="Left" Margin="301,343,0,0" VerticalAlignment="Top" Width="115" Height="31" Click="BtnLogIn_Click_1" BorderBrush="#FFD35E5A"  Foreground="White" FontSize="16" TabIndex="3">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFD35E5A"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF3E8284"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label x:Name="lblInfo" Content="Weather Forcast" HorizontalAlignment="Left" Margin="135,13,0,0" VerticalAlignment="Top" Width="183" Panel.ZIndex="3" Foreground="#FFD35E5A" FontSize="22" FontWeight="Bold" FontStyle="Italic"/>
+        <PasswordBox x:Name= "txbPassword"  HorizontalAlignment="Left" Margin="233,138,0,0" VerticalAlignment="Top" Width="183" Height="29" Background="#FF3E8284" Foreground="White" BorderBrush="Black" TabIndex="2"/>
+        <Button x:Name="btnSignUp" Content="Sign Up" HorizontalAlignment="Left" Margin="165,343,0,0" VerticalAlignment="Top" Width="114" Height="31"  BorderBrush="#FFD35E5A"  Foreground="White" Click="BtnSignUp_Click" FontSize="16" TabIndex="4">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFD35E5A"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF3E8284"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label x:Name="lblConfirmPassword" Content="Confirm Password :" HorizontalAlignment="Left" Margin="27,190,0,0" VerticalAlignment="Top" Width="196" Panel.ZIndex="3" Foreground="#FFF4E675" FontSize="18" />
+        <PasswordBox x:Name= "txbConfirmPassword"  HorizontalAlignment="Left" Margin="233,191,0,0" VerticalAlignment="Top" Width="183" Height="29" Background="#FF3E8284" Foreground="White" BorderBrush="Black" TabIndex="4"/>
+        <Button x:Name="btnEditAccount" Content="Edit Account" HorizontalAlignment="Left" Margin="27,343,0,0" VerticalAlignment="Top" Width="118" Height="31"  BorderBrush="#FFD35E5A"  Foreground="White"  FontSize="16" Click="BtnEditAccount_Click" TabIndex="5">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFD35E5A"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF3E8284"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <CheckBox x:Name="ckTypeUser" Content="Check if forecaster" HorizontalAlignment="Left" Margin="27,300,0,0" VerticalAlignment="Top" Foreground="#FFF4E663" FontSize="18" Width="177" TabIndex="6" Checked="CkTypeUser_Checked" Unchecked="CkTypeUser_Unchecked"/>
+        <PasswordBox x:Name="txbForcasterPassword" HorizontalAlignment="Left" Margin="233,245,0,0" VerticalAlignment="Top" Width="183" Height="29" Background="#FF3E8284" Foreground="White" BorderBrush="Black" TabIndex="5"/>
+        <Label x:Name="lblForecasterPassword" Content="Forecaster Password :" HorizontalAlignment="Left" Margin="27,243,0,0" VerticalAlignment="Top" Width="200" Panel.ZIndex="3" Foreground="#FFF4E675" FontSize="18" />
+        <Button x:Name="btnSignUp2" Content="Sign Up" HorizontalAlignment="Left" Margin="301,343,0,0" VerticalAlignment="Top" Width="115" Height="31"  BorderBrush="#FFD35E5A"  Foreground="White" FontSize="16" Click="BtnSignUp2_Click" TabIndex="6">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFD35E5A"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF3E8284"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="btnContinue" Content="Continue" HorizontalAlignment="Left" Margin="301,343,0,0" VerticalAlignment="Top" Width="115" Height="31"  BorderBrush="#FFD35E5A" Foreground="White" FontSize="16" Click="BtnContinue_Click" TabIndex="3">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFD35E5A"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF3E8284"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="btnFinsh" Content="Finish" HorizontalAlignment="Left" Margin="301,343,0,0" VerticalAlignment="Top" Width="115" Height="31"  BorderBrush="#FFD35E5A" Foreground="White" FontSize="16" Click="BtnFinsh_Click" TabIndex="6">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFD35E5A"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF3E8284"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label x:Name="lblWelcome" Content="Welcome" HorizontalAlignment="Left" Margin="135,199,0,0" VerticalAlignment="Top" Width="157" Height="57" Foreground="#FFF4E663" FontSize="36"/>
+        <Label x:Name="lblWelcome2" Content="To My Weather App" HorizontalAlignment="Left" Margin="59,240,0,0" VerticalAlignment="Top" Width="335" Height="57" Foreground="#FFF4E663" FontSize="36"/>
+
+    </Grid>
+</Window>

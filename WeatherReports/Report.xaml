@@ -1,0 +1,138 @@
+﻿<Window x:Class="WeatherReports.Report"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherReports"
+        mc:Ignorable="d"
+        Title="Report" Height="657.971" Width="1379.791" Closed="Window_Closed" FontWeight="Bold" WindowStartupLocation="CenterScreen" Background="#FF0D2636">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border>
+                            <Grid>
+                                <Grid>
+                                    <Border x:Name="border" 
+                                            CornerRadius="3,3,0,0"
+                                            Background="#FF3E8284" />
+                                </Grid>
+                                <ContentPresenter ContentSource="Header"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#FFEFE173"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#FFEFE173"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,2,0" Background="#FF061C29" Height="628" VerticalAlignment="Top">
+        <Label x:Name="lblInfo1" Content="      Weather Forecast" HorizontalAlignment="Left" VerticalAlignment="Top" Width="394" FontSize="36" Height="64" FontWeight="Bold" Foreground="#FFCB5B57" Background="Transparent" FontStyle="Italic" Margin="462,2,0,0"/>
+        <TabControl HorizontalAlignment="Left" Height="484" Margin="24,70,0,0" VerticalAlignment="Top" Width="1322" Background="#FF0D2636" BorderBrush="Transparent">
+            <TabItem Header="       Forecast Results      " Background="#FFEFE173" Cursor="Arrow" FontSize="20" Foreground="Black">
+                <Grid Background="#FF0D2636" Margin="-8,0,0,-3">
+                    <DataGrid x:Name="dgData" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding}" Height="446" Margin="4,2,0,0" VerticalAlignment="Top" Width="1310" IsReadOnly="True" Background="#FF0E2737" BorderBrush="{x:Null}" TextOptions.TextFormattingMode="Display" LoadingRow="DgData_LoadingRow" EnableRowVirtualization="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" Foreground="Black">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="Aqua"/>
+                                <Setter Property="BorderThickness" Value="1,1,1,1"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="MinHeight" Value="40"/>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="BorderThickness" Value="0,0,0,0"/>
+                                <Setter Property="FontSize" Value="22"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="MinHeight" Value="112"/>
+                            </Style>
+                        </DataGrid.Resources>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="              City" Binding="{Binding Dcity}" Width="170"/>
+                            <DataGridTextColumn Header="            Date" Binding="{Binding Ddate}" Width="150"/>
+                            <DataGridTextColumn Header="    Min Temp (°C)" Binding="{Binding DminTemp}" Width="160"/>
+                            <DataGridTextColumn Header="    Max Temp (°C)" Binding="{Binding DmaxTemp}" Width="160"/>
+                            <DataGridTextColumn Header="  Precipitation (%)" Binding="{Binding Dprecipitation}" Width="160"/>
+                            <DataGridTextColumn Header="     Humidity (%)" Binding="{Binding Dhumidity}" Width="160"/>
+                            <DataGridTextColumn Header="  Wind Speed (km/h)" Binding="{Binding DwindSpeed}" Width="185"/>
+                            <DataGridTemplateColumn Header ="        Weather" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Dimage}" Height="80" Width="80" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="     Lowest and Highest Forecast Results     " Background="#FFEFE173" Cursor="Arrow" FontSize="20" Foreground="Black">
+                <Grid Background="#FF0D2636" Margin="0,0,-2,0">
+                    <TextBox x:Name="txbRanges" HorizontalAlignment="Left" Height="440" Margin="4,2,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1312" Background="#FF0E2737" BorderBrush="Transparent" FontWeight="Bold" SelectionBrush="Transparent" FontSize="18" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" Foreground="#FFEFE173" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="20,568,0,0" VerticalAlignment="Top" Width="174" Click="BtnBack_Click" Height="44" FontSize="20" TabIndex="1" Foreground="#FFE8E8E8" BorderBrush="Black" FontStyle="Italic">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFD35E5A"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF3E8284"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="btnSave" Content="Print" HorizontalAlignment="Left" Margin="230,568,0,0" VerticalAlignment="Top" Width="174" Height="44" FontSize="20" TabIndex="1" Foreground="#FFE8E8E8" BorderBrush="Black" FontStyle="Italic" Click="BtnPrint_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFD35E5A"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF3E8284"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>
